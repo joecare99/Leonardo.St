@@ -20,7 +20,7 @@ Leonardo is a tool that combines steganography, symmetric encryption, and additi
 
 ## > Download
 
-Get the latest binary release [here](https://github.com/2alf/Leonardo/releases/tag/alpha).
+Get the latest binary release [here](https://github.com/2alf/Leonardo/releases/).
 
 
 ![leo_0009_Layer-7](https://github.com/2alf/Leonardo/assets/113948114/9ca30cba-727a-4bc2-b322-ec804b028b93)
