@@ -17,15 +17,15 @@ Leonardo is a tool that combines steganography, symmetric encryption, and additi
 
 ## Features
 
-- **New:** Encrypt a string into an already existing image using Stegodon (a C# library built for this project) and high-bit AES encryption.
+> **New:** Encrypt a string into an already existing image using Stegodon (a C# library built for this project) and high-bit AES encryption.
 
-- **Crack:** Decrypt any message that was injected through this app.
+> **Crack:** Decrypt any message that was injected through this app.
 
-- **Gen:** Insert Stable Diffusion prompt, insert the string you want to encrypt, and save your one-of-a-kind password holder.
+> **Gen:** Insert Stable Diffusion prompt, insert the string you want to encrypt, and save your one-of-a-kind password holder.
 
 ## Known Issues
 
-- **Gen HTTP Request:** Gen utilizes an HTTP request to fetch from an API, which can fail when loading the service initially. Restart the application a few times until you establish a connection. We are actively working on fixing this in the next patch series.
+> **Gen HTTP Request:** Gen utilizes an HTTP request to fetch from an API, which can fail when loading the service initially. Restart the application a few times until you establish a connection. We are actively working on fixing this in the next patch series.
 <img src="https://github.com/2alf/Leonardo/assets/113948114/f9ebabdf-7aa9-402d-81ca-aada743129fb" width="250" alt="image">
 
 
@@ -127,7 +127,7 @@ Feel free to contribute or report any issues!
 <img src="https://github.com/2alf/Leonardo/assets/113948114/b673b914-57d1-440d-9359-533608e38428" width="500" alt="image">
 
 
-You will then be prompted to select an image after which you will get a popup to store your string.
+>You will then be prompted to select an image after which you will get a popup to store your string.
 
 
 <img src="https://github.com/2alf/Leonardo/assets/113948114/53c11743-d2ed-4b3b-b515-f19310951320" width="500" alt="image">
