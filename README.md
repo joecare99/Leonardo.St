@@ -5,6 +5,10 @@
 
 Leonardo is a tool that combines steganography, symmetric encryption, and additional AI protection to securely encrypt and embed strings into images.
 
+
+![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/2alf/Leonardo/alpha/total?style=for-the-badge&label=INSTALLS%40v1&color=3E9544)
+
+
 ### Table of Contents
 
 
@@ -33,6 +37,7 @@ Leonardo is a tool that combines steganography, symmetric encryption, and additi
 ## Download
 
 Get the latest binary release [here](https://github.com/2alf/Leonardo/releases/).
+
 
 
 ![leo_0009_Layer-7](https://github.com/2alf/Leonardo/assets/113948114/9ca30cba-727a-4bc2-b322-ec804b028b93)
