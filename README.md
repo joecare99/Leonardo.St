@@ -157,6 +157,6 @@ You will then be prompted to select an image after which you will get a popup to
 
 🐶 Dog Images API [dog.ceo](https://dog.ceo/dog-api/)
 
-🤗 HugginFace Model `my-favourite-dog` by [Maheshmarathe](https://api-inference.huggingface.co/models/Maheshmarathe/my-favourite-dog).
+🤗 HugginFace Model `my-favourite-dog` by [Maheshmarathe](https://huggingface.co/Maheshmarathe/my-favourite-dog).
 
 🐘 Steganography library [Stegodon](https://github/2alf/Stegodon/) by 2alf.
