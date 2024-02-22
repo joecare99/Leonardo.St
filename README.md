@@ -155,6 +155,7 @@ Feel free to contribute or report any issues!
 
 >🙏 **Thank you!** 
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C1C3UABOS)
 
 
 
