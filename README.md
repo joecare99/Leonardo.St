@@ -29,6 +29,9 @@ Leonardo is a tool that combines steganography, symmetric encryption, and additi
 
 ## Known Issues
 
+IF YOU RECEIVE THE *BAD REQUEST* ERROR YOU ARE USING AN OUTDATED VERSION OF THE PROGRAM. Download the latest build to fix this issue [here](https://github.com/2alf/Leonardo/releases/latest)
+This error is made because HF had a token breach and a lot of existing tokens were deleted. This new version has a new token.
+
 > **Gen HTTP Request:** Gen utilizes an HTTP request to fetch from an API, which can fail when loading the service initially. Restart the application a few times until you establish a connection. We are actively working on fixing this in the next patch series.
 <img src="https://github.com/2alf/Leonardo/assets/113948114/f9ebabdf-7aa9-402d-81ca-aada743129fb" width="250" alt="image">
 
