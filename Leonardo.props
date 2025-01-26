@@ -1,0 +1,18 @@
+<Project>
+	<PropertyGroup>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<Platforms>AnyCPU;x64</Platforms>
+		<BaseOutputPath>..\..\bin\$(MSBuildProjectName)\</BaseOutputPath>
+		<BaseIntermediateOutputPath>..\..\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+		<IntermediateOutputPath Condition="'$(TargetFramework)'!='net60-windows' and '$(TargetFramework)'!='net70-windows'">..\..\obj\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<IntermediateOutputPath Condition="'$(TargetFramework)'=='net60-windows' or '$(TargetFramework)'=='net70-windows'">..\..\obj.net\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<DefineConstants>NULLABLE</DefineConstants>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Company>JC-Soft</Company>
+		<Authors>Joe Care</Authors>
+		<Copyright>Copyright © JC-Soft 2025</Copyright>
+	</PropertyGroup>
+</Project>
