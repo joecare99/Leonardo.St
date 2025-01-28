@@ -141,7 +141,7 @@ public class LeonardoView : Panel
             Text = $"░Test1░",
             size = new Size(20, 1)
         };
-        btnTest1.OnClick += (s,e)=>txtWindow.WriteLine($"This is a Test {btnTest1.Tag++ % 100}...");
+        btnTest1.OnClick += (s,e)=>txtWindow.WriteLine($"This is a Test {btnTest1.Tag = ((int?)btnTest1.Tag??0 ) % 100 + 1}...");
 
 
         _ViewModel.PropertyChanged += _vmPropertyChanged;

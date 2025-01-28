@@ -15,7 +15,6 @@ using System;
 using System.Drawing;
 using ConsoleLib;
 using ConsoleLib.CommonControls;
-using System.Windows.Forms;
 using Leonardo.Views;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +25,7 @@ using Leonardo.ViewModels;
 using ConsoleLib.ConsoleLib.Interfaces;
 using BaseLib.Interfaces;
 using BaseLib.Models;
+using ConsoleLib.Interfaces;
 
 /// <summary>
 /// The Leonardo namespace.
@@ -64,7 +64,7 @@ public class Program
         App.Run();
 
         Console.Write("Programm end ...");
-        ExtendedConsole.Stop();
+        ConsoleFramework.ExtendedConsole.Stop();
     }
 
     public static void Init()
@@ -75,6 +75,8 @@ public class Program
          .AddSingleton<IOpenFileDialog, OpenFileProxy>()
          .AddSingleton<ISaveFileDialog, SaveFileProxy>()
          .AddSingleton<IApplication>(BuildApp)
+         .AddSingleton<Application, Application>()
+         .AddSingleton<IExtendedConsole, ExtendedConsole>()
          .AddSingleton<ISteganography, Steganography>()
          .AddTransient<IHttpClient, HttpClientProxy>()
          .AddTransient<IConsole, ConsoleProxy>()
@@ -101,16 +103,14 @@ public class Program
         cl.Inflate(-3, -3);
         Console.ForegroundColor = ConsoleColor.White;
 
-        App = new ConsoleLib.CommonControls.Application(Ioc.Default.GetRequiredService<IConsole>())
-        {
-            Visible = false,
-            Border = ConsoleFramework.singleBorder,
-            ForeColor = ConsoleColor.Gray,
-            BackColor = ConsoleColor.DarkGray,
-            BoarderColor = ConsoleColor.Green,
-            Dimension = cl
-        };
-
+        App = Ioc.Default.GetRequiredService<Application>();
+        App.Visible = false;
+        App.Border = ConsoleFramework.singleBorder;
+        App.ForeColor = ConsoleColor.Gray;
+        App.BackColor = ConsoleColor.DarkGray;
+        App.BoarderColor = ConsoleColor.Green;
+        App.Dimension = cl;
+        
         //Mouse.Set(0, 0, " ");
         //Mouse.BackColor = ConsoleColor.Red;
         //Mouse.Parent = App;
@@ -136,7 +136,7 @@ public class Program
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="MouseEventArgs" /> instance containing the event data.</param>
-    private static void App_MouseMove(object? sender, MouseEventArgs e)
+    private static void App_MouseMove(object? sender, IMouseEvent e)
     {
  //       Mouse.Set(Point.Subtract(e.Location, (Size?)Mouse.Parent?.Position??Size.Empty));
     }

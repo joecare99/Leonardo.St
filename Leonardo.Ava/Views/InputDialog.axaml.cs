@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CommunityToolkit.Mvvm.ComponentModel.__Internals;
 using Leonardo.Ava.ViewModels;
 using System;
 using System.Threading;
@@ -29,9 +30,13 @@ public partial class InputDialog : UserControl
                 Message = arg
             }
         };
-
-        var result = await window.ShowDialog<InputDialogViewModel>(owner);
-
-        return result.Input;
+        var c = owner.Content;
+        owner.Content = window;
+        while ((window.DataContext as InputDialogViewModel)?.Input == null)
+        {
+            Thread.Sleep(10);
+        }
+        owner.Content = c;  
+        return (window.DataContext as InputDialogViewModel)?.Input;
     }
 }

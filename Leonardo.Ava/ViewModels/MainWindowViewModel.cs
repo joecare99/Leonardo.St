@@ -1,3 +1,4 @@
+using BaseLib.Interfaces;
 using CommunityToolkit.Mvvm.Input;
 using Leonardo.Models.Interfaces;
 using Leonardo.ViewModels.Interfaces;
@@ -39,6 +40,9 @@ public class MainWindowViewModel: ILeonardoViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
+
+    public void SetConsole(IConsole console) { }
+        
     #endregion
 
 }

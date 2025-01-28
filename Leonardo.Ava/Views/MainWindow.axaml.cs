@@ -18,7 +18,7 @@ namespace Leonardo.Ava.Views
             {
                 vm.ShowFileDialog = (s)=>s.ShowDialog();
                 vm.MessageBoxShow = (s)=> this.FindControl<TextBlock>("txtMessage").Text = s;
-                vm.InputShowDialog = (s) => { return "" };
+                vm.InputShowDialog = (s) => { return ""; };
             }
         }
     }

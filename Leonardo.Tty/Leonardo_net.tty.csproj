@@ -26,6 +26,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib_net.csproj" />
 		<ProjectReference Include="..\..\CSharpBible\Libraries\ConsoleLib\ConsoleLib_net.csproj" />
+		<ProjectReference Include="..\..\CSharpBible\Libraries\ExtendedConsole\ExtendedConsole.csproj" />
 		<ProjectReference Include="..\Leonardo.Model\Leonardo.Model.csproj" />
 	</ItemGroup>
 	<ItemGroup>

@@ -17,4 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib_net.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib_net.csproj" />
+  </ItemGroup>
 </Project>
