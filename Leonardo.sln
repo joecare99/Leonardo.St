@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLib_net", "..\CSharpBib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLib_net", "..\CSharpBible\Libraries\ConsoleLib\ConsoleLib_net.csproj", "{74492BC0-5B30-43D9-9AB3-9391F2925303}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedConsole", "..\CSharpBible\Libraries\ExtendedConsole\ExtendedConsole.csproj", "{C550A476-499F-459F-B5C8-37B077870C3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{74492BC0-5B30-43D9-9AB3-9391F2925303}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74492BC0-5B30-43D9-9AB3-9391F2925303}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74492BC0-5B30-43D9-9AB3-9391F2925303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C550A476-499F-459F-B5C8-37B077870C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C550A476-499F-459F-B5C8-37B077870C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C550A476-499F-459F-B5C8-37B077870C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C550A476-499F-459F-B5C8-37B077870C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FE6EDEE8-F3F9-4AB7-A73D-CD9CB406D6E5} = {75DF3F9F-BC7C-464B-83D2-C6A6A5C819CD}
 		{74492BC0-5B30-43D9-9AB3-9391F2925303} = {75DF3F9F-BC7C-464B-83D2-C6A6A5C819CD}
+		{C550A476-499F-459F-B5C8-37B077870C3C} = {75DF3F9F-BC7C-464B-83D2-C6A6A5C819CD}
 	EndGlobalSection
 EndGlobal
