@@ -8,7 +8,7 @@
         d:DesignHeight="450"
         x:DataType="vm:InputDialogViewModel"
         x:Class="Leonardo.Ava.Views.InputDialog"
-        Title="InputDialog">
+        >
   <Design.DataContext>
     <!--
             This only sets the DataContext for the previewer in an IDE,

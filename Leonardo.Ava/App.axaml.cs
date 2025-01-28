@@ -2,6 +2,8 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using BaseLib.Interfaces;
+using BaseLib.Models;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Leonardo.Ava.Views;
 using Leonardo.Models;
