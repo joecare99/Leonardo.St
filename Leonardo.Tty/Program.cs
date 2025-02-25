@@ -74,7 +74,7 @@ public class Program
          .AddTransient<ILeonardoViewModel, LeonardoViewModel>()
          .AddSingleton<IOpenFileDialog, OpenFileProxy>()
          .AddSingleton<ISaveFileDialog, SaveFileProxy>()
-         .AddSingleton<IApplication>(BuildApp)
+         .AddSingleton(BuildApp)
          .AddSingleton<Application, Application>()
          .AddSingleton<IExtendedConsole, ExtendedConsole>()
          .AddSingleton<ISteganography, Steganography>()
