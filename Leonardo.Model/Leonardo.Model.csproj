@@ -15,9 +15,6 @@
     <PackageReference Include="System.Drawing.Common" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib_net.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib_net.csproj" />
+    <ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib.csproj" />
   </ItemGroup>
 </Project>
