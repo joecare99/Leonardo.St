@@ -22,10 +22,9 @@ using Leonardo.Models.Interfaces;
 using Leonardo.Models;
 using Leonardo.ViewModels.Interfaces;
 using Leonardo.ViewModels;
-using ConsoleLib.ConsoleLib.Interfaces;
+using ConsoleLib.Interfaces;
 using BaseLib.Interfaces;
 using BaseLib.Models;
-using ConsoleLib.Interfaces;
 
 /// <summary>
 /// The Leonardo namespace.

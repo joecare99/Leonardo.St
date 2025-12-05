@@ -19,7 +19,7 @@ using System.ComponentModel;
 using Leonardo_net.tty.Properties;
 using CommunityToolkit.Mvvm.Input;
 using ConsoleLib.CommonControls;
-using ConsoleLib.ConsoleLib.Interfaces;
+using ConsoleLib.Interfaces;
 
 /// <summary>
 /// The Views namespace.
