@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Leonardo.Ava.ViewModels"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+        x:DataType="vm:InputDialogViewModel"
+        x:Class="Leonardo.Ava.Views.InputDialog"
+        >
+  <Design.DataContext>
+    <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+    <vm:InputDialogViewModel />
+  </Design.DataContext>
+  <Grid >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <StackPanel
+        Grid.Row="1"
+        HorizontalAlignment="Stretch"
+        Orientation="Vertical">
+      <TextBlock Text="{Binding Message}" />
+      <TextBox Text="{Binding Input}" />
+
+      <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+        <Button Command="{Binding OkCommand}" Content="OK" />
+        <Button Command="{Binding CancelCommand}" Content="Cancel" />
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</UserControl>

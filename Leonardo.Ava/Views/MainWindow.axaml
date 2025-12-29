@@ -1,0 +1,38 @@
+<Window
+    x:Class="Leonardo.Ava.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Leonardo.Ava.ViewModels"
+    xmlns:vmi="using:Leonardo.ViewModels.Interfaces"
+    Title="Leonardo.Ava"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vmi:ILeonardoViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    RequestedThemeVariant="Dark"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+  <DockPanel>
+    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+      <Button Content="New" Command="{Binding EncodeCommand}" />
+      <Button Content="Crack" Command="{Binding DecodeCommand}" />
+      <Button Content="Gen" Command="{Binding GenerateCommand}" />
+    </StackPanel>
+    
+      <TextBlock
+        x:Name="txtMessage"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Text="{Binding MessageText}" />
+  </DockPanel>
+  
+</Window>

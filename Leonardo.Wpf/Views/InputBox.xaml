@@ -1,0 +1,35 @@
+﻿<Window
+    x:Class="Leonardo.Views.InputBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Leonardo.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Leonardo.ViewModels"
+    Title="InputBox"
+    Width="800"
+    Height="350"
+    mc:Ignorable="d">
+    <!--Window.DataContext>
+        <vm:InputBoxViewModel />
+    </Window.DataContext-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            Orientation="Vertical">
+            <TextBlock Text="{Binding Message}" />
+            <TextBox Text="{Binding Input}" />
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Command="{Binding OkCommand}" Content="OK" />
+                <Button Command="{Binding CancelCommand}" Content="Cancel" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
