@@ -169,3 +169,5 @@ Feel free to contribute or report any issues!
 🤗 HugginFace Model `my-favourite-dog` by [Maheshmarathe](https://huggingface.co/Maheshmarathe/my-favourite-dog).
 
 🐘 Steganography library [Stegodon](https://github.com/2alf/Stegodon) by 2alf.
+
+Version 2 updated by [joecare99](https://github.com/joecare99).
