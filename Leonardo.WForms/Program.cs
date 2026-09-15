@@ -8,6 +8,7 @@ using Leonardo.Models.Interfaces;
 using Leonardo.Models;
 using BaseLib.Interfaces;
 using BaseLib.Models;
+using Leonardo.Properties;
 
 internal static class Program
 {
@@ -24,6 +25,8 @@ internal static class Program
         Application.SetCompatibleTextRenderingDefault(defaultValue: false);
 
         var sp = new ServiceCollection()
+            .AddSingleton<ILeonardoSettings, SettingsProxy>()
+            .AddSingleton<IHuggingFaceApi, HuggingFaceApi>()
             .AddSingleton<ILeonardoClass, LeonardoClass>()
             .AddTransient<ILeonardoViewModel, LeonardoViewModel>()
             .AddSingleton<IOpenFileDialog, OpenFileProxy>()
