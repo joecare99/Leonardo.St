@@ -22,6 +22,7 @@ namespace Leonardo.Wpf
         protected override void OnStartup(StartupEventArgs e)
         {
             var services = new ServiceCollection()
+                .AddSingleton<IHuggingFaceApi, HuggingFaceApi>()
                 .AddSingleton<ILeonardoClass, LeonardoClass>()
                 .AddTransient<ILeonardoViewModel, LeonardoViewModel>()
                 .AddSingleton<IOpenFileDialog, OpenFileProxy>()
