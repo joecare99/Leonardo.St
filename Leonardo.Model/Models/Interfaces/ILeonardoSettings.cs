@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Leonardo.Models.Interfaces;
+﻿namespace Leonardo.Models.Interfaces;
 
 public interface ILeonardoSettings
 {
