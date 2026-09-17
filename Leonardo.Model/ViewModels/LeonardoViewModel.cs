@@ -33,6 +33,11 @@ public partial class LeonardoViewModel : ObservableObject, ILeonardoViewModel
     private ILeonardoClass _model;
 
     /// <summary>
+    /// The hugging face API
+    /// </summary>
+    private IHuggingFaceApi _huggingFaceApi;
+
+    /// <summary>
     /// Gets or sets a delegate function that displays a file dialog to the user.
     /// </summary>
     /// <value>
@@ -131,9 +136,10 @@ public partial class LeonardoViewModel : ObservableObject, ILeonardoViewModel
     /// <item><description>Synchronizing initial property values from the model.</description></item>
     /// </list>
     /// </remarks>
-    public LeonardoViewModel(ILeonardoClass model)
+    public LeonardoViewModel(ILeonardoClass model, IHuggingFaceApi huggingFaceApi)
     {
         _model = model;
+        _huggingFaceApi = huggingFaceApi;
         _model.PropertyChanged += OnModelPropertyChanged;
         _model.SaveFileQuery = SaveFileQuery;
         _model.MessageBoxShow = (string message) => MessageBoxShow?.Invoke(message);
@@ -270,7 +276,7 @@ public partial class LeonardoViewModel : ObservableObject, ILeonardoViewModel
             string text = InputShowDialog("SD prompt");
             if (!string.IsNullOrEmpty(text))
             {
-                _model.HuggingRequest2ENC(text);
+                _huggingFaceApi.HuggingRequest2ENC(text);
             }
             else
             {
@@ -299,7 +305,7 @@ public partial class LeonardoViewModel : ObservableObject, ILeonardoViewModel
     [RelayCommand()]
     private async void Test()
     {
-        await _model.HuggingRequest();
+        await _huggingFaceApi.HuggingRequest();
     }
 
     /// <summary>

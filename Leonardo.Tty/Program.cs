@@ -26,6 +26,7 @@ using ConsoleLib.Interfaces;
 using ConsoleLib.ExtCon;
 using BaseLib.Interfaces;
 using BaseLib.Models;
+using Leonardo.Properties;
 
 /// <summary>
 /// The Leonardo namespace.
@@ -70,6 +71,8 @@ public class Program
     public static void Init()
     {
         var sp = new ServiceCollection()
+         .AddSingleton<ILeonardoSettings, SettingsProxy>()
+         .AddSingleton<IHuggingFaceApi, HuggingFaceApi>()
          .AddSingleton<ILeonardoClass, LeonardoClass>()
          .AddTransient<ILeonardoViewModel, LeonardoViewModel>()
          .AddSingleton<IOpenFileDialog, OpenFileProxy>()
