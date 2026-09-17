@@ -10,6 +10,7 @@
   </Folder>
   <Project Path="Leonardo.Ava/Leonardo.Ava.csproj" />
   <Project Path="Leonardo.Model/Leonardo.Model.csproj" />
+  <Project Path="Leonardo.Tests/Leonardo.Tests.csproj" />
   <Project Path="Leonardo.Tty/Leonardo.tty.csproj" />
   <Project Path="Leonardo.Tty/Leonardo_net.tty.csproj" />
   <Project Path="Leonardo.WForms/Leonardo.WForms.csproj" />
