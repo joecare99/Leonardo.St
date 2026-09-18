@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
@@ -18,12 +19,11 @@ using BaseLib.Interfaces;
 
 namespace Leonardo.Models;
 
-public partial class LeonardoClass : ObservableObject , ILeonardoClass
+public partial class LeonardoClass : ObservableObject, ILeonardoClass
 {
     private readonly IHttpClient _httpClient;
     private readonly ISteganography _steganography;
     private IConsole _console;
-    private readonly ILeonardoSettings appSettings;
 
     [ObservableProperty]
     private Bitmap? _picBoxDECImg;
@@ -32,42 +32,13 @@ public partial class LeonardoClass : ObservableObject , ILeonardoClass
     private string _messageText = "< >";
 
     [ObservableProperty]
-    private ECursor _cursorCurrent;
+    public partial ECursor CursorCurrent { get; set; } = ECursor.Default;
 
-    public Func<string,string?>? SaveFileQuery { get; set; }
+    public Func<string, string?>? SaveFileQuery { get; set; }
     public Action<string>? MessageBoxShow { get; set; }
     public Func<string, string>? InputQuery { get; set; }
     public Action? ShowGeneratingMessage { get; set; }
     public Action? HideGeneratingMessage { get; set; }
-    public async Task<List<byte[]>> GetDogImages(string breed, int maxImages)
-    {
-        List<byte[]> imageDatas = new List<byte[]>();
-        try
-        {
-            _httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
-            {
-                NoCache = true,
-                NoStore = true,
-                MustRevalidate = true,
-                MaxAge = TimeSpan.Zero
-            };
-            string text = $"https://dog.ceo/api/breed/{breed}/images";
-            var obj = await _httpClient.GetAsync(text);
-            obj.EnsureSuccessStatusCode();
-            JObject val = JObject.Parse(await obj.Content.ReadAsStringAsync());
-            List<string>? imageUrls = val["message"]?.ToObject<List<string>>();
-            int numImagesToFetch = Math.Min(maxImages, imageUrls?.Count ?? 0);
-            for (int i = 0; i < numImagesToFetch; i++)
-            {
-                imageDatas.Add(await DownloadImage(imageUrls![i]));
-            }
-            return imageDatas;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Error fetching dog images: " + ex.Message);
-        }
-    }
 
     private Size GetImageSize(byte[] imageData)
     {
@@ -83,26 +54,7 @@ public partial class LeonardoClass : ObservableObject , ILeonardoClass
         return new Bitmap(original, targetSize);
     }
 
-    private async Task<byte[]> DownloadImage(string imageUrl)
-    {
-        try
-        {
-            IHttpClient httpClient = Ioc.Default.GetRequiredService<IHttpClient>();
-            try
-            {
-                _console.WriteLine($"Downloading image from URL: {imageUrl}");
-                return await httpClient.GetByteArrayAsync(imageUrl);
-            }
-            finally
-            {
-                ((IDisposable)httpClient)?.Dispose();
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Error downloading image: " + ex.Message);
-        }
-    }
+ 
 
     private Bitmap ResizeBitmap(Bitmap bitmap, int width, int height)
     {
@@ -260,108 +212,7 @@ public partial class LeonardoClass : ObservableObject , ILeonardoClass
         return Color.FromArgb((int)num4, (int)num5, (int)num6);
     }
 
-    public async Task HuggingRequest()
-    {
-        IHttpClient val = Ioc.Default.GetRequiredService<IHttpClient>();
-        string text = "https://api-inference.huggingface.co/models/Maheshmarathe/my-favourite-dog";
-        string text2 = "{\"inputs\": \"Corgi with a banana hat\"}";
-        string text3 = appSettings.Get(ELSetting.ApiToken);
-        try
-        {
-            HttpRequestMessage val2 = new HttpRequestMessage(HttpMethod.Post, text);
-            ((HttpHeaders)val2.Headers).Add("Authorization", "Bearer " + text3);
-            val2.Content = (HttpContent)new StringContent(text2, Encoding.UTF8, "application/json");
-            HttpResponseMessage val3 = await val.SendAsync(val2);
-            if (val3.IsSuccessStatusCode)
-            {
-                byte[] bytes = await val3.Content.ReadAsByteArrayAsync();
-                string text4 = "image.jpg";
-                File.WriteAllBytes(text4, bytes);
-                _console.WriteLine("saved to: " + text4);
-            }
-            else
-            {
-                _console.WriteLine("Request failed with status code: " + val3.StatusCode);
-            }
-        }
-        catch (Exception ex)
-        {
-            _console.WriteLine("Error: " + ex.Message);
-        }
-    }
-
-    public async Task HuggingRequest2ENC(string inputString)
-    {
-        CursorCurrent = ECursor.WaitCursor;
-        IHttpClient val = Ioc.Default.GetRequiredService<IHttpClient>();
-        string text = "https://api-inference.huggingface.co/models/Maheshmarathe/my-favourite-dog";
-        string text2 = $"{{\"inputs\": \"{inputString}\"}}";
-        string obj = appSettings.Get(ELSetting.ApiToken);
-        SecureString secureString = new SecureString();
-        string text3 = obj;
-        if (obj != null)
-        foreach (char c in text3)
-        {
-            secureString.AppendChar(c);
-        }
-        try
-        {
-            HttpRequestMessage val2 = new HttpRequestMessage(HttpMethod.Post, text);
-            if (secureString != null)
-            {
-                IntPtr intPtr = IntPtr.Zero;
-                string text4 = null;
-                try
-                {
-                    intPtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                    text4 = Marshal.PtrToStringUni(intPtr);
-                }
-                finally
-                {
-                    Marshal.ZeroFreeGlobalAllocUnicode(intPtr);
-                }
-                ((HttpHeaders)val2.Headers).Add("Authorization", "Bearer " + text4);
-            }
-            else
-            {
-                CursorCurrent = ECursor.Default;
-                MessageBoxShow("Token parsing failed");
-            }
-            val2.Content = (HttpContent)new StringContent(text2, Encoding.UTF8, "application/json");
-            HttpResponseMessage val3 = await val.SendAsync(val2);
-            ShowGeneratingMessage();
-            if (val3.IsSuccessStatusCode)
-            {
-                byte[] bytes = await val3.Content.ReadAsByteArrayAsync();
-                string text5 = "mskxnsdknfo30d821jx93x29138x10.jpg";
-                CursorCurrent = ECursor.Default;
-                File.WriteAllBytes(text5, bytes);
-                _console.WriteLine("saved to: " + text5);
-                using (Bitmap image = new Bitmap(text5))
-                {
-                    PromptAndEncryptDOG(image);
-                }
-                File.Delete(text5);
-                _console.WriteLine("president secured.");
-            }
-            else
-            {
-                _console.WriteLine("Request failed with status code: " + val3.StatusCode);
-                MessageBoxShow("Sorry... \n There was a server connection issue: " + val3.StatusCode.ToString() + " \n This is common when first starting up. \n Please restart the application and try again");
-            }
-        }
-        catch (Exception ex)
-        {
-            _console.WriteLine("Error: " + ex.Message);
-            MessageBoxShow(ex.ToString());
-        }
-        finally
-        {
-            HideGeneratingMessage();
-        }
-    }
-
-    public LeonardoClass(IHttpClient httpClient, ISteganography steganography,IConsole console)
+    public LeonardoClass(IHttpClient httpClient, ISteganography steganography, IConsole console)
     {
         _httpClient = httpClient;
         _steganography = steganography;
@@ -379,23 +230,10 @@ public partial class LeonardoClass : ObservableObject , ILeonardoClass
         Bitmap bitmap = _steganography.Encrypt(new Bitmap(imagePath), inputString);
 
         string? fileName;
-        if (null != (fileName = SaveFileQuery?.Invoke("Image Files (*.png, *.jpg)|*.png;*.jpg;")) )
-        {
-            bitmap.Save(fileName);
-            MessageBoxShow?.Invoke("Encryption completed successfully! Image saved at: " + fileName);
-        }
-    }
-
-    private void PromptAndEncryptDOG(Bitmap image)
-    {
-        string inputString = InputQuery?.Invoke("Enter string to encrypt");
-        Bitmap bitmap = _steganography.Encrypt(image, inputString);
-
-        string? fileName;
         if (null != (fileName = SaveFileQuery?.Invoke("Image Files (*.png, *.jpg)|*.png;*.jpg;")))
         {
             bitmap.Save(fileName);
-            MessageBoxShow("Encryption completed successfully! Image saved at: " + fileName);
+            MessageBoxShow?.Invoke("Encryption completed successfully! Image saved at: " + fileName);
         }
     }
 
@@ -407,14 +245,14 @@ public partial class LeonardoClass : ObservableObject , ILeonardoClass
         if (null != (fileName = SaveFileQuery?.Invoke("Image Files (*.png, *.jpg)|*.png;*.jpg;")))
         {
             bitmap.Save(fileName);
-            MessageBoxShow("Encryption completed successfully! Image saved at: " + fileName);
+            MessageBoxShow?.Invoke("Encryption completed successfully! Image saved at: " + fileName);
         }
     }
 
     public void PromptAndDecrypt(string fileName)
     {
         Bitmap image = new Bitmap(fileName);
-            PicBoxDECImg = image;
+        PicBoxDECImg = image;
         string text = _steganography.Decrypt(image);
         MessageText = text;
 
