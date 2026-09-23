@@ -25,6 +25,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="JCSoft.CSharpBible.Libraries.Core" />
+	  <PackageReference Include="JCSoft.CSharpBible.Libraries.Windows" />
 	</ItemGroup>
 		<ItemGroup>
       <ProjectReference Include="..\Leonardo.Model\Leonardo.Model.csproj" />

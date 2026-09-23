@@ -28,10 +28,14 @@
 		<None Remove="App.config" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib.csproj" />
+	  <PackageReference Include="JCSoft.CSharpBible.Libraries.Core" />
+	  <PackageReference Include="JCSoft.CSharpBible.Libraries.Windows" />
+	</ItemGroup>
+	<ItemGroup>
+		<!--<ProjectReference Include="..\..\CSharpBible\Libraries\BaseLib\BaseLib.csproj" />
 		<ProjectReference Include="..\..\CSharpBible\Libraries\ConsoleLib.ExtCon\ConsoleLib.ExtCon.csproj" />
 		<ProjectReference Include="..\..\CSharpBible\Libraries\ConsoleLib\ConsoleLib.csproj" />
-		<ProjectReference Include="..\..\CSharpBible\Libraries\ExtendedConsole\ExtendedConsole.csproj" />
+		<ProjectReference Include="..\..\CSharpBible\Libraries\ExtendedConsole\ExtendedConsole.csproj" />-->
 		<ProjectReference Include="..\Leonardo.Model\Leonardo.Model.csproj" />
 	</ItemGroup>
 	<ItemGroup>
