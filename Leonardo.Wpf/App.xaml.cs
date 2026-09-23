@@ -24,6 +24,7 @@ namespace Leonardo.Wpf
             var services = new ServiceCollection()
                 .AddSingleton<IHuggingFaceApi, HuggingFaceApi>()
                 .AddSingleton<ILeonardoClass, LeonardoClass>()
+                .AddTransient<ILeonardoSettings, SettingsProxy>()
                 .AddTransient<ILeonardoViewModel, LeonardoViewModel>()
                 .AddSingleton<IOpenFileDialog, OpenFileProxy>()
                 .AddSingleton<ISaveFileDialog, SaveFileProxy>()
